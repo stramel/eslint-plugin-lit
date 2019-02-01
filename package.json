@@ -34,6 +34,10 @@
     "eslint": ">= 5"
   },
   "devDependencies": {
+    "@pika/plugin-build-deno": "^0.3.7",
+    "@pika/plugin-build-node": "^0.3.7",
+    "@pika/plugin-build-types": "^0.3.7",
+    "@pika/plugin-ts-standard-pkg": "^0.3.7",
     "@types/eslint": "^4.16.5",
     "@types/estree": "0.0.39",
     "@types/node": "^10.12.18",
@@ -47,5 +51,14 @@
     "mocha": "^5.2.0",
     "typescript": "^3.2.2",
     "typescript-eslint-parser": "^21.0.2"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      ["@pika/plugin-ts-standard-pkg", {
+        "exclude": ["src/test/*"]
+      }],
+      ["@pika/plugin-build-deno"],
+      ["@pika/plugin-build-node"]
+    ]
   }
 }
